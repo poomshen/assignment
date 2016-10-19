@@ -17,6 +17,9 @@ public class Program {
 //		
 //		factory.setHandlers(map);
 		
+		ApplicationContext context = new GenericXmlApplicationContext("classpath:ex01/DI_09.xml");
+		
+		
 
 	}
 
