@@ -1,5 +1,0 @@
-구조 (Collection injection)
-인터페이스 (MyFilter)
-  구현하는 클래스 : Enc... , Header... , Zip...
-  
-ProtocolHandler 클래스가 사용 (의존) MyFilter  
