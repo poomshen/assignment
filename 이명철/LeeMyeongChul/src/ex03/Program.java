@@ -19,9 +19,9 @@ public class Program {
 		
 		ApplicationContext context = new GenericXmlApplicationContext("classpath:ex03/ApplicationContext.xml");
 		
-		MonitorViewer viewer =  context.getBean("monitorViewer", MonitorViewer.class);
+/*		MonitorViewer viewer =  context.getBean("monitorViewer", MonitorViewer.class);
 		
-		viewer.RecorderPrint();
+		viewer.RecorderPrint();*/
 		
 		
 	}
