@@ -1,8 +1,5 @@
 package ex01;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.GenericXmlApplicationContext;
 
@@ -16,6 +13,8 @@ public class Program {
 //		map.put("Rss", new RssHandler());
 //		
 //		factory.setHandlers(map);
+		
+		ApplicationContext context = new GenericXmlApplicationContext("classpath:ex01/DI_09.xml");
 		
 
 	}
