@@ -1,0 +1,22 @@
+package ex01;
+
+
+
+public class Program {
+
+	public static void main(String[] args) {
+//		ProtocolHandlerFactory factory = new ProtocolHandlerFactory();
+//		
+//		Map<String,ProtocolHandler> map = new HashMap<String, ProtocolHandler>();
+//		map.put("rest", new RestHandler());
+//		map.put("Rss", new RssHandler());
+//		
+//		factory.setHandlers(map);
+		
+		applica
+		
+		
+
+	}
+
+}
