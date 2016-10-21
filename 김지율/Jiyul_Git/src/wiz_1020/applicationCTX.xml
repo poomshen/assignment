@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans 
+                           http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="student" class="wiz_1020.Student">
+		<!-- 차례대로 들어가지는구나! 짱신기함 @_@ -->
+		<constructor-arg value="김지율"/>
+		<constructor-arg value="29"/> 
+	</bean>
+</beans>
+
+

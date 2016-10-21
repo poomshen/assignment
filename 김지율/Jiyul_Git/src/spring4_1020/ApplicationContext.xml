@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xmlns:aop="http://www.springframework.org/schema/aop"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans 
+                           http://www.springframework.org/schema/beans/spring-beans.xsd
+                           http://www.springframework.org/schema/aop
+                           http://www.springframework.org/schema/aop/spring-aop.xsd">
+                           
+<!--
+@date    : 2016.10.20 오후 스터디
+@author  : 김지율
+@Comment : XML 스키마 기반의 POJO 클래스를 이용한 AOP 구현
+-->	
+
+<!--
+	
+-->
+	
+	<bean id="profiler" class="Spring4_1020.Profiler"/>
+	
+	<aop:config>
+		<aop:aspect id="traceAspect" ref="profiler">
+			<aop:pointcut id="" expression=""
+			<aop:around pointcut-ref="publicMethod" method="trace"/>
+		</aop:aspect>	
+	</aop:config>
+	
+	<bean id="memberService" class="spring4_1020.MemberServiceImpl"/>
+	
+		
+</beans>
