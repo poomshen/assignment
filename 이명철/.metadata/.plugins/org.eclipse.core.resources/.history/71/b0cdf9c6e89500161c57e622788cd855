@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans 
+                           http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+<!-- IOC 컨테이너(spring 전용 메모리) 안에 생성될 객체 생성 조립을 구성하는 파일  -->
+<!--  
+		ProtocolHandlerFactory factory = new ProtocolHandlerFactory();
+		
+		Map<String,ProtocolHandler> map = new HashMap<String, ProtocolHandler>();
+		map.put("rest", new RestHandler());
+		map.put("Rss", new RssHandler());
+		
+		factory.setHandlers(map);
+-->
+	<bean id="protocolHandlerFactory" class="ex01.ProtocolHandlerFactory">
+		<property name="handlers">
+			<map>
+				<entry>
+					<key><value>rest</value></key>
+				</entry>
+				<entry>
+					<ref bean=""/>
+				</entry>
+			</map>
+		</property>
+	</bean>
+
+</beans> 
+
+

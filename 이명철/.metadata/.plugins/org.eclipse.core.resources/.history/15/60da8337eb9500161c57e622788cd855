@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans 
+                           http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!--ProtocolHandler ph = new ProtocolHandler();
+		ArrayList<MyFilter> arrayList = new ArrayList<MyFilter>();
+		arrayList.add(new ZipFilter());
+		arrayList.add(new HeaderFilter());
+		arrayList.add(new EncFilter());
+		
+		ph.setFilters(arrayList);  -->
+		
+	<bean id="protocolHandler" class="ex02.ProtocolHandler">
+		<property name="filter">
+			<list>
+				<bean id="zipFilter" class="ex02.ZipFilter"></bean>
+				<bean id="headerFilter" class="ex02.HeaderFilter"></bean>
+				<bean id="encFilter" class="ex02.EncFilter"></bean>
+			</list>
+		</property>
+	
+	
+	</bean>
+	
+		
+</beans>
+
+

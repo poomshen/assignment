@@ -8,7 +8,7 @@ public class ProtocolHandlerFactory {
 
 	public void setHandlers(Map<String, ProtocolHandler> handlers) {
 		this.handlers = handlers;
-		System.out.println("setter 주입 성공 :" + this.handlers.toString());
+		System.out.println("여기 풀었어요 ~~  :" + this.handlers.toString());
 	}
 	
 	

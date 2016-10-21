@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans 
+                           http://www.springframework.org/schema/beans/spring-beans.xsd
+                           http://www.springframework.org/schema/context 
+                           http://www.springframework.org/schema/context/spring-context.xsd">
+
+<!--   
+        xmlns:context="http://www.springframework.org/schema/context"
+		삭제 된 부분 :http://www.springframework.org/schema/context 
+                  http://www.springframework.org/schema/context/spring-context.xsd
+                              
+	    MonitorViewer viewer = new MonitorViewer();
+		viewer.setRecorder(new Recorder());
+-->
+<!-- Annotation 사용없이 순수한 xml 설정을 통한 작업(1단계)  -->
+<!-- 
+<bean id="monitorViewer" class="DI_Annotation_01.MonitorViewer">
+	<property name="recorder">
+		<ref bean="recorder"/>
+	</property>
+</bean>
+<bean id="recorder" class="DI_Annotation_01.Recorder"></bean> 
+
+@Autowired (자동 주입)
+사용해서 구현 해보세요
+-->
+<context:annotation-config />
+<bean id="monitorViewer" class="ex03.MonitorViewer" />
+
+
+</beans> 
+
+

@@ -15,7 +15,15 @@ public class Program {
 		
 		
 	    //System.out.println(viewer.getRecorder());
-		//viewer.RecorderPrint();	
+		//viewer.RecorderPrint();
+		
+		ApplicationContext context = new GenericXmlApplicationContext("classpath:ex03/ApplicationContext.xml");
+		
+/*		MonitorViewer viewer =  context.getBean("monitorViewer", MonitorViewer.class);
+		
+		viewer.RecorderPrint();*/
+		
+		
 	}
 
 }
