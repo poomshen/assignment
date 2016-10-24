@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans 
+                           http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+<!-- IOC 컨테이너(spring 전용 메모리) 안에 생성될 객체 생성 조립을 구성하는 파일  -->
+<!-- 
+		ProtocolHandler ph = new ProtocolHandler();
+		ArrayList<MyFilter> arraylist = new ArrayList<MyFilter>();
+		arraylist.add(new ZipFilter());
+		arraylist.add(new HeaderFilter());
+		arraylist.add(new EncFilter());
+		
+		ph.setFilters(arraylist); //setter injection
+-->
+		<!-- 1단계 방법으로 처리하기
+		 <bean id="protocolHandler" class="DI_07_Spring.ProtocolHandler">
+			문제점 :setter 주입 : arraylist : <list></list> 
+				hint : JDK 제공하는 자원은 xml 에서 지원 <list> <map>
+				bean 으로 직접 만드는 자원은 사용자가 만든 클래스
+				
+				순서 : bean 순서는 의미 없다
+				      1.bean 먼저 생성
+				      2.injection 후에 (setter)
+			
+			<property name="filters">
+				<list> arraylist 생성 
+					<ref bean="zipFilter" />
+					<ref bean="headerFilter" />
+					<ref bean="encFilter" />
+				</list>
+			</property>
+		</bean>
+		<bean id="zipFilter" class="DI_07_Spring.ZipFilter"></bean>
+		<bean id="headerFilter" class="DI_07_Spring.HeaderFilter"></bean>
+		<bean id="encFilter" class="DI_07_Spring.EncFilter"></bean> 
+		-->
+		<!-- 2단계 방법 처리하기  -->
+		 <bean id="protocolHandler" class="DI_07_Spring.ProtocolHandler">
+		 	<property name="filters">
+		 		<list><!-- new ZipFilter() -->
+		 			<bean class="DI_07_Spring.ZipFilter" />	
+		 			<bean class="DI_07_Spring.HeaderFilter" />		 
+		 			<bean class="DI_07_Spring.EncFilter" />		 	 			
+		 		</list>
+		 	</property>		 
+		 </bean>
+</beans> 
+
+

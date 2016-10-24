@@ -1,0 +1,15 @@
+게시판 테이블 (Article)
+
+프로그램
+
+-DTO (Article)
+
+-DAO (ArticleDAO) : Interface > ArticleDAO(공통함수 : 기능)
+ -구현하는 DAO
+   -MysqlDAO
+   -OracleDAO 
+
+-SERVICE(WriteArticleService)
+
+
+->요청 ->SERVICE(요청판단) -> 필요한 DAO 생성 -> DTO 생성 -> VIEW 

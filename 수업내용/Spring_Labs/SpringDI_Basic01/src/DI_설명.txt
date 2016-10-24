@@ -1,0 +1,75 @@
+[DI-개념_1] : 의존성 주입 (의존객체 주입)
+-NewRecordView 클래스가 NewRecord에 의존
+-NewRecordView 클래스가 필요한 객체를 [생성자] 통해서 주입
+-두 클래스의 lifecycle 동일
+
+NewRecordView view = new NewRecordView(5,6,8);
+- new NewRecord() 생성 
+- NewRecord record 생성된 객체의 주소값 
+
+result : 필요한 객체는 생성자를 통해서 주입(또는 생성) 가능
+-------------------------------------------------------
+
+[DI-개념_2] : 의존성 주입(DI) : 함수 : setter 통해서
+- NewRecordView 클래스가 필요로 하는 객체를 [setter] 통해서 주입 받아 사용
+- 객체의 생성이 서로 독립적이고 [필요시] 객체를 주입
+- [두 객체의 lifeCycle 은 동일하지 않다]
+
+
+[DI-개념_3] (의존성 주입 : 인터페이스 활용)
+인터페이스 : Record , RecordView 
+활용)
+public void setRecord(Record record) { //인터페이스 적용
+		this.record = (NewRecord)record;
+	}
+------------------------------------------------------
+시나리오
+
+Class A , Class B
+[A라는 클래스가 B라는 클래스를 사용하는 방법]
+
+1. 상속 (is-a) > Spring Framework 관심이 없어요
+
+2. 포함 (has-a)
+   
+   [생성자:constructor injection]
+   생성코드 : A a = new A();
+   --A라는 클래스의 [생성자]에서 B라는 클래스를 생성하는 방법
+   --class A {
+                 B b;
+                 public A(){
+                 		b = new B();
+                 }
+             }
+   [함수: setter injection]
+   생성코드 : A a = new A();  B b = new B();   a.SetB(b);
+   --class B {}
+   --class A {
+                B b;
+                public void SetB(B b){
+                	this.b = b;
+                }
+             }
+
+result : Spring FrameWork 는  다른 객체 참조(의존) 하기위해서 
+         [constructor injection][[setter injection]] 사용
+result : DI (Dependency injection) : 의존성 주입
+         
+Spring 없으면 DI 구현할 수 없다 ( 잘못된 표현)
+단 Spring 통해서 DI 하면  좀 더 편하게 객체의 생성과 조립                  
+
+
+-----------------------------
+1. Spring 사이트에서 다운로드 (jar)
+   버전확인 : 4.2.5
+             dist.zip (Spring 핵심 jar)
+   버전확인 : 3.0.2
+             dependency.zip (Spring 클래스가 사용하는 보조 클래스)
+
+2. beans , context , core , expression jar 현재 프로젝트 추가
+
+3. xml 파일 (IOC 컨테이너 안에 생성될 [객체의 조립 구성]하는 파일)
+            (IOC 컨테이너가 구성되고 나서 xml read 하고 객체 생성)            
+             
+
+

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans 
+                           http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+<!-- IOC 컨테이너(spring 전용 메모리) 안에 생성될 객체 생성 조립을 구성하는 파일  -->
+<!--  
+		MessageBeanImpl messagebean = new MessageBeanImpl("kglim");
+		messagebean.setGreeting("hello");
+		위 코드를 xml DI 변경하세요
+-->
+<!--  
+	문법 : id="한개의 값"
+	       name="여러개의 이름을 설정해서 사용"
+	       구분자 : (,) (공백) (;) 3가지 구분자 : m1  m2  m3  m4 이름을 가져요
+-->
+	<bean id="messagebean" name="m1,m2 m3;m4" class="DI_04_Spring.MessageBeanImpl">
+		<!-- 
+		<constructor-arg>
+			<value>kglim</value>
+		</constructor-arg> 
+		-->
+		<constructor-arg value="kglim" />
+		
+		<!-- messagebean.setGreeting("hello"); 
+		  property name 속성은 setter , getter 구현하는 있는 [멤버변수명]
+		-->
+		<property name="greeting">
+			<value>Hello</value>
+		</property>
+	</bean>
+</beans>

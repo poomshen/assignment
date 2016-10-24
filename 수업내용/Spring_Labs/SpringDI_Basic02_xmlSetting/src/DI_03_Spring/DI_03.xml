@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans 
+                           http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+<!-- IOC 컨테이너(spring 전용 메모리) 안에 생성될 객체 생성 조립을 구성하는 파일  -->
+
+<!-- 
+	자바코드 :  객체 생성 코드
+	MessageBean message = new MessageBean_En();
+	MessageBean message = new MessageBean_Kr();
+
+ -->
+	<bean id="message" class="DI_03_Spring.MessageBean_kr" />
+</beans>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans 
+                           http://www.springframework.org/schema/beans/spring-beans.xsd
+                           http://www.springframework.org/schema/context 
+                           http://www.springframework.org/schema/context/spring-context.xsd">
+
+<!-- IOC 컨테이너(spring 전용 메모리) 안에 생성될 객체 생성 조립을 구성하는 파일  -->
+<!--  
+	1.DataSourceFactory 빈 객체 생성
+	2.DI_11.xml 에서 파일(jdbc.properties) read 해서
+	  DataSourceFactory : 4가 setter 에 주입(injection)
+	
+	 추가 이유 (Namespace 추가)
+	 xmlns:context="http://www.springframework.org/schema/context" 
+	 =>JNDI (파일기반 데이터 찿기)  
+-->
+	<context:property-placeholder location="classpath:DI_11_Spring/jdbc.properties" />
+	<bean id="dataSourceFactory" class="DI_11_Spring.DataSourceFactory">
+		<property name="jdbcDriver" value="${jdbc.driver}" />
+		<property name="jdbcUrl"    value="${jdbc.url}" />
+		<property name="username"   value="${jdbc.username}" />
+		<property name="password"   value="${jdbc.password}" />
+	</bean>
+
+</beans> 
+
+

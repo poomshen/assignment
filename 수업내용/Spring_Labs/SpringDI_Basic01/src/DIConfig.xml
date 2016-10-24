@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans 
+                           http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+<!-- IOC 컨테이너(spring 전용 메모리) 안에 생성될 객체 생성 조립을 구성하는 파일  -->
+<!-- 	
+		NewRecord record = new NewRecord();
+		NewRecordView view = new NewRecordView();
+		view.setRecord(record);//객체 주입
+		
+		위 코드를 Spring 설정을 통해서 생성 주입 
+-->
+	<bean id="record" class="Spring_DI4.NewRecord"></bean>
+	<bean id="view"   class="Spring_DI4.NewRecordView">
+		<property name="record" ref="record"></property>	
+	</bean>
+</beans>

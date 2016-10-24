@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans 
+                           http://www.springframework.org/schema/beans/spring-beans.xsd
+                           http://www.springframework.org/schema/context 
+                           http://www.springframework.org/schema/context/spring-context.xsd">
+	<context:annotation-config />
+	<bean id="monitorViewer" class="DI_Annotation_03.MonitorViewer" />
+ 	<bean id="a" class="DI_Annotation_03.Recorder" />
+ 	<bean id="b" class="DI_Annotation_03.Recorder" />
+ 	<bean id="c" class="DI_Annotation_03.Recorder" />
+ 	<bean id="d" class="DI_Annotation_03.Recorder" />
+ 	<bean id="e" class="DI_Annotation_03.Recorder" />
+    <bean id="xxxx" class="DI_Annotation_03.Recorder" />
+	<!--  
+	설명:
+	IOC 컨테이너 안에 같은 타입의 bean 이 여러개 있는 경우
+	public void setRecorder(Recorder xxxx) {
+		this.recorder = xxxx;
+	}
+	id == xxxx 같다면 
+	parameter  이름하고 bean  id 같으면 허용(injection)
+	-->
+</beans> 
+
+
+
