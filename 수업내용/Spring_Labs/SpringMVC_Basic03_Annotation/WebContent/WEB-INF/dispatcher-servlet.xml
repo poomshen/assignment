@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans 
+                           http://www.springframework.org/schema/beans/spring-beans.xsd
+                           http://www.springframework.org/schema/context 
+                           http://www.springframework.org/schema/context/spring-context.xsd">
+<context:annotation-config />
+<!-- @Autowired , @Resoruce 동작 bean을 자동 등록 -->
+
+<!-- 공통작업 view 단 처리  -->
+<bean id="internalResourceViewResolver" 
+      class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+	<property name="prefix">
+		<value>/WEB-INF/view/</value>
+	</property>
+	<property name="suffix">
+		<value>.jsp</value>
+	</property>
+</bean>
+
+<!-- Test_1 설정 
+@Controller 어노테이션 자동 > component-scan 선행 > bean 생성자동
+<context:component-scan base-package="com.controller" />
+처리하면 별도의 @Controller 클래스 bean 생성 할 필요 없어요
+-->
+<bean class="com.controller.HelloController"></bean>
+
+
+<!-- Test_2 : Form(GET, POST) -->
+<bean class="com.controller.NewArticleController" />
+<bean class="com.service.ArticleService" />
+
+
+<!-- Test_3 : Form(GET, POST)(List 컬렉션 다루기) -->
+<bean id="orderController" class="com.controller.OrderController"></bean>
+
+
+<!-- Test_4(Http 전송 : parameter 다루기 : @RequestParam) -->
+<bean  class="com.controller.SearchController"></bean>
+
+
+<!-- Test_5(Spring Cookie 사용하기 : @Cookievalue) -->
+<bean class="com.controller.CookieController"></bean>
+
+<!-- Test_6(@ModelAttribute) -->
+<bean class="com.controller.CodeSearchController"></bean>
+
+<!-- Test_7 파일 업로드 (CommonsMultipartResolver) -->
+<bean class="com.controller.ImageController"></bean>
+
+<!-- id 값은 반드시 : [multipartResolver]   -->
+<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+	<property name="maxUploadSize" value="10485760" />
+</bean>
+
+</beans>
