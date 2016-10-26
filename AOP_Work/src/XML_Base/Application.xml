@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans 
+                           http://www.springframework.org/schema/beans/spring-beans.xsd
+                           http://www.springframework.org/schema/aop
+                           http://www.springframework.org/schema/aop/spring-aop.xsd
+                           http://www.springframework.org/schema/context 
+                           http://www.springframework.org/schema/context/spring-context.xsd">
+
+<!-- 공통 기능을 제공할 클래스를 빈으로 등록 -->
+<bean id="aspectAdvice" class="XML_Base.AspectAdvice"/>
+<bean id="mainFunction" class="XML_Base.MainFunction"/>
+
+
+<!-- Aspect 설정 : Advice를 어떤 Pointcut에 적용할지 설정 -->
+<aop:config>
+	<aop:aspect id="id_aspectAdvice" ref="aspectAdvice">
+		<aop:pointcut expression="execution(* XML_Base.*.*(..))" id="publicMethod"/>
+		<aop:around pointcut-ref="publicMethod" method="trace"/>
+	</aop:aspect>
+</aop:config>
+
+</beans>
+
+
