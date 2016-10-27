@@ -12,16 +12,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
-import dao.MemberDao;
+import dao.NewMemberDao;
 import vo.Member;
 
 @Controller
 public class MembersController {
 	
-	private MemberDao memberDao;
+	private NewMemberDao memberDao;
 	@Autowired
-	public void setMemberDao(MemberDao memberDao) {
-		this.memberDao = memberDao;
+	public void setMemberDao(NewMemberDao newMemberDao) {
+		this.memberDao = newMemberDao;
 	}
 
 	@RequestMapping(value="joinus/join.htm",method=RequestMethod.GET)
@@ -32,8 +32,7 @@ public class MembersController {
 	@RequestMapping(value="joinus/join.htm",method=RequestMethod.POST)
 	public String insertMember(Member member) throws ClassNotFoundException, SQLException{
 		System.out.println("여기 탄다");
-		int ck = memberDao.insert(member);
-		if(ck > 0){
+		if(memberDao.insert(member)){
 			System.out.println("회원가입 성공");
 		}
 		return "redirect:login.htm";

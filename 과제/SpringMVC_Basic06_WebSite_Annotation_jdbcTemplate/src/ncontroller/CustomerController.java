@@ -13,9 +13,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 import vo.Notice;
-import dao.NoticeDao;
+import dao.NewNoticeDao;
 
 //폴더 경로가 긴 경우
 //  /customer/notice.htm => notice.htm (함수 mapping)
@@ -25,7 +26,7 @@ import dao.NoticeDao;
 public class CustomerController {
 
 	@Autowired
-	private NoticeDao noticeDao;
+	private NewNoticeDao noticeDao;
 	
 	//글목록보기
 	@RequestMapping("notice.htm")
@@ -91,17 +92,24 @@ public class CustomerController {
 	@RequestMapping(value="noticeReg.htm" , method=RequestMethod.POST)
 	public String noticeReg(Notice n,HttpServletRequest request) throws ClassNotFoundException, SQLException, IOException{
 		System.out.println("noticeReg.htm");
+		List<CommonsMultipartFile> file = n.getFile();
+		for(int i =0  ; i< file.size();i++){
+			
+			String filename = file.get(i).getOriginalFilename();
+			String path = request.getServletContext().getRealPath("/customer/upload");
+			String fpath = path + "\\" + filename;
+			FileOutputStream fs = new FileOutputStream(fpath);
+			fs.write(file.get(i).getBytes());
+			if(i>=1){
+				n.setFileSrc2(filename);
+			}else{
+				n.setFileSrc1(filename);
+			}
+			fs.close();
+		}
 		
-		String filename = n.getFile().getOriginalFilename();
-		String path = request.getServletContext().getRealPath("/customer/upload");
-		
-		String fpath = path + "\\" + filename;
-		FileOutputStream fs = new FileOutputStream(fpath);
-		fs.write(n.getFile().getBytes());
-		fs.close();
 		
 		//파일명 추가
-		n.setFileSrc(filename);
 		
 		noticeDao.insert(n);
 		return "redirect:notice.htm";
@@ -171,16 +179,23 @@ public class CustomerController {
 	@RequestMapping(value="noticeEdit.htm" , method=RequestMethod.POST)
 	public String noticeEdit(Notice n,HttpServletRequest request) throws IOException, ClassNotFoundException, SQLException{
 		
-		String filename = n.getFile().getOriginalFilename();
-		String path = request.getServletContext().getRealPath("/customer/upload");
-		
-		String fpath = path + "\\" + filename;
-		FileOutputStream fs = new FileOutputStream(fpath);
-		fs.write(n.getFile().getBytes());
-		fs.close();
+		List<CommonsMultipartFile> file = n.getFile();
+		for(int i =0  ; i< file.size();i++){
+			
+			String filename = file.get(i).getOriginalFilename();
+			String path = request.getServletContext().getRealPath("/customer/upload");
+			String fpath = path + "\\" + filename;
+			FileOutputStream fs = new FileOutputStream(fpath);
+			fs.write(file.get(i).getBytes());
+			if(i>=1){
+				n.setFileSrc2(filename);
+			}else{
+				n.setFileSrc1(filename);
+			}
+			fs.close();
+		}
 		
 		//파일명 추가
-		n.setFileSrc(filename);
 		
 		noticeDao.update(n);
 		return "redirect:noticeDetail.htm?seq=" + n.getSeq();

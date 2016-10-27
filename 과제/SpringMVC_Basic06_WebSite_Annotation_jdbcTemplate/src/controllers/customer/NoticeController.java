@@ -9,15 +9,15 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.Controller;
 
 import vo.Notice;
-import dao.NoticeDao;
+import dao.NoticeDao2;
 
 //게시물 목록보기
 //행위당 한개 
 
 public class NoticeController implements Controller {
 
-	private NoticeDao noticedao;
-	public void setNoticedao(NoticeDao noticedao) {
+	private NoticeDao2 noticedao;
+	public void setNoticedao(NoticeDao2 noticedao) {
 		this.noticedao = noticedao;
 	}
 
