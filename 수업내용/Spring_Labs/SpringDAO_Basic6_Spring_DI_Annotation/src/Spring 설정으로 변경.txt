@@ -1,3 +1,0 @@
-1. Spring 에서 필요한 jar 참조
-2. xml 만들고 bean 생성 injection 
-3. Spring 4.2.5
