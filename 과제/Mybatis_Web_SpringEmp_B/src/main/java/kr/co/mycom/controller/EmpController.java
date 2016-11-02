@@ -215,13 +215,15 @@ public class EmpController {
 	}
 	
 	@RequestMapping("/searchs.htm")
-	public String searchList(String cmd ,String column ,String keyvalue , Model model){
+	public String searchList(String ename,String deptno,String mgr, Model model){
+	
 		empDAO empDao = sqlsession.getMapper(empDAO.class);
 		
-		Map<String, String> map = new HashMap<String, String>();
-		map.put("column", column);
-		map.put("search", keyvalue);
-		List<empDTO> list = empDao.selectSearch(map);
+		Map<String, String> ch = new HashMap<String, String>();
+		ch.put("ename", ename);
+		ch.put("deptno", deptno);
+		ch.put("mgr", mgr);
+		List<empDTO> list = empDao.selectSearch(ch);
 		
 		model.addAttribute("list",list);
 		
