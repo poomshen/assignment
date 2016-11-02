@@ -12,16 +12,15 @@
 		
 		ph.setFilters(arrayList);  -->
 		
-		<bean id="protocolHandler" class="ex02.ProtocolHandler">
-			<property name="filters">
-				<list>
-					<bean class="ex02.ZipFilter"></bean>
-					<bean class="ex02.HeaderFilter"></bean>
-					<bean class="ex02.EncFilter"></bean>
-				</list>
-			</property>
-		
-		</bean>
+<bean id="protocolHandler" class="ex02.ProtocolHandler">
+<property name="filters">
+<list>
+<bean id="zipFilter" class="ex02.ZipFilter"/>
+<bean id="headerFilter" class="ex02.HeaderFilter"/>
+<bean id="encFilter" class="ex02.EncFilter"/>
+</list>
+</property>
+</bean>
 </beans>
 
 
