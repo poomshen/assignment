@@ -36,6 +36,6 @@ public interface empDAO {
  
  List<empDTO> choosesearch(Map<String, String> choosesearch);
 
- 
+ int comminto(List<String> check,int sel);
 
 }

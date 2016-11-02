@@ -32,6 +32,9 @@
                     <li>
                         <a href="writeform.htm">글쓰기</a>
                     </li>
+                    <li>
+                        <a href="commform.htm">보너스주기</a>
+                    </li>
                     <li style="margin-left: 50px;">
                     	<input type="text" class="form-control" style="margin-top: 5px;">
                     </li>

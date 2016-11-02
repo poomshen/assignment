@@ -105,6 +105,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	 	</choose>
 	 </select>
 	 
+	 <update id="comminto">
+	 update emp set comm = param2
+	 where empno in
+	 <foreach collection="check" item="a" open="(" separator="," close=")"> 
+	 	${a}
+	 </foreach>
+	 </update>
 </mapper>
 
 

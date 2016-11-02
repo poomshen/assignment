@@ -10,10 +10,12 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.stereotype.Controller;
-
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
-
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import kr.co.mycom.model.empDAO;
 import kr.co.mycom.model.empDTO;
@@ -268,7 +270,28 @@ public class EmpController {
 		return "emp.chooseseaechform";
 	}
  
+	
+	@RequestMapping(value="/commform.htm",method=RequestMethod.GET)
+	public String commform(Model model){
+		 empDAO empDao = sqlsession.getMapper(empDAO.class);
 
+		 List<empDTO> list = empDao.getEmpList();
+		
+		 model.addAttribute("list",list);
+		return "emp.commform";
+	}
+	@RequestMapping(value="/commform.htm",method=RequestMethod.POST)
+	@Transactional
+	public String commform(Model model,@RequestParam("check") List<String> check ,@RequestParam("sel") int sel){
+		
+		 empDAO empDao = sqlsession.getMapper(empDAO.class);
+		 empDao.comminto(check, sel);
+		 
+		 List<empDTO> list = empDao.getEmpList();
+		
+		 model.addAttribute("list",list);
+		return "emp.commform";
+	}
 }
 
 
