@@ -88,6 +88,22 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	 	</where>
 	 </select>
 	 
+	 
+ 	 <select id="choosesearch" resultType="kr.co.mycom.model.empDTO">
+	 	select * from emp where
+	 	<choose>
+    	<when test="choose == 'no'">
+    		empno like '%' || #{search} || '%'
+	 	</when>
+	 	<when test="choose == 'name'">
+    		ename like '%' || #{search} || '%'
+	 	</when>
+    	<when test="choose == 'job'">
+    		job like '%' || #{search} || '%'
+	 	</when>
+	 	</choose>
+	 </select>
+	 
 </mapper>
 
 

@@ -227,6 +227,44 @@ public class EmpController {
 		
 		return "emp.SearchList";
 	}
+	
+	
+	@RequestMapping("/choosesearchform.htm")
+	
+	public String arraydeleteform(Model model){
+		
+		  empDAO empDao = sqlsession.getMapper(empDAO.class);
+
+			
+
+		  List<empDTO> list = empDao.getEmpList();
+
+		  
+
+		  model.addAttribute("list",list);
+		  
+		  
+		return "emp.chooseseaechform";
+	}
+	
+	
+	@RequestMapping("/choosesearch.htm")
+	public String choosesearch(String choose, String search, Model model){
+		System.out.println("choose : " + choose);
+		System.out.println("search : " + search);
+		
+		empDAO empDao = sqlsession.getMapper(empDAO.class);
+		
+		Map<String, String> ch = new HashMap<String, String>();
+		ch.put("choose", choose);
+		ch.put("search", search);
+		
+		List<empDTO> list = empDao.choosesearch(ch);
+		
+		model.addAttribute("list",list);
+		
+		return "emp.chooseseaechform";
+	}
  
 
 }
