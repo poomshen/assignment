@@ -65,29 +65,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
  </select>
 
-<select id="selectSearch" parameterType="hashMap" resultType="kr.co.mycom.model.empDTO">
-       select * from emp 
-   		<trim prefix="WHERE" prefixOverrides="AND">
-		<if test="deptno!=0">deptno=#{deptno}</if>
-		<if test="mgr!=null">AND mgr=#{mgr}</if>
-		<if test="ename!=null">AND ename=#{ename}</if>
-	</trim>
- </select>
-    <select id="selectSearch2" parameterType="hashMap" resultType="kr.co.mycom.model.empDTO">
-       select * from emp
-       <where>
-          <if test="name!= null">
-             empno = #{search} 
-          </if>
-          <if test="email!= null">
-             or ename = #{search}
-          </if>
-          <if test="home!= null">
-             or job = #{search}
-          </if>
-      </where>
-    </select>
-
 
 	<select id="selectSearch" parameterType="hashMap" resultType="kr.co.mycom.model.empDTO">
 	 	select * from emp 
