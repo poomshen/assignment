@@ -21,6 +21,9 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
                     <li>
+                		<a href="calendar.htm">캘린더</a>
+                	</li> 
+                    <li>
                 		<a href="choosesearchform.htm">조건 검색</a>
                 	</li>                                
                     <li>
