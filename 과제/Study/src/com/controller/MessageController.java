@@ -43,12 +43,12 @@ public class MessageController {
 		return getMessageList2();
 	}
 	
-	@RequestMapping(value = "/message/post.json", method =RequestMethod.POST)
+	
+	/*@RequestMapping(value = "/message/post.json", method =RequestMethod.POST)
 	@ResponseBody
 	public JsonMessageList postJson(@RequestBody JsonMessageList jsonMessageList){
-		System.out.println("이제 집에 갈시간. !~");
 		return jsonMessageList;
-	}
+	}*/
 	
 	
 	private JsonMessageList getMessageList2(){

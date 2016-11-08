@@ -8,15 +8,16 @@
 <script type="text/javascript"><%@include file="/WEB-INF/views/js/Json.js" %></script>
 </head>
 <body>
-
-<ul>
+<br><br>
+<div class="text-center">
+ 	<a  class="btn btn-success" href="message/list.xml">Xml 변환</a><br><br>
 
  	
- 	<li><a  class="btn btn-success" href="message/list.xml">Xml 변환</a><br><br></li>
-    <li><a  class="btn btn-success" href="message/list.json">Json 변환</a><br><br></li>
-    <li><a  class="btn btn-success" href="javascript:postJson()">변환 얍</a><br><br></li>
+    <a  class="btn btn-success" href="message/list.json">Json 변환</a><br><br>
+    <!-- <a  class="btn btn-success" href="javascript:postJson()">변환 얍</a><br><br> -->
+</div>
 
-</ul>
+
 
 </body>
 </html>

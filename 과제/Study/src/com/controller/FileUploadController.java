@@ -20,16 +20,16 @@ public class FileUploadController {
 	@RequestMapping(value="fileupload.htm", method=RequestMethod.POST)
 	public String fileupload(MultipartFile file, String title, Model model) throws IllegalStateException, IOException{
 		
-		System.out.println("안녕하시오?");
+		
 		if(!file.isEmpty()){
 			String filename = file.getName();
 			String uploadPath = "C:\\Kosta129\\Spring\\Spring_Labs_STS\\SpringMVC_Team03_FileUpload\\src\\main\\webapp\\WEB-INF\\images"; 
 			String originfilename = file.getOriginalFilename();
-			System.out.println("안녕하시오??");
+			
 			File f = new File(uploadPath + "\\" + originfilename);
 			file.transferTo(f);
 			String uploadpath = f.getAbsolutePath();
-			System.out.println("안녕하시오???");
+			
 			model.addAttribute("uploadPath", uploadPath);
 			model.addAttribute("originfilename", originfilename);
 			model.addAttribute("uploadpath", uploadpath);

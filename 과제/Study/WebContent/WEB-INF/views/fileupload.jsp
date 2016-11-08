@@ -11,12 +11,22 @@
 
 
 <body>
-
-
-	<form action="fileupload.htm" method="post" enctype="multipart/form-data">
-		제목 : <input type="text" name="title"><br>
-		파일 : <input type="file" name="file"><br>
-		<input type="submit" value="전송">
+	<br><br>
+	<form class="form-horizontal" action="fileupload.htm" method="post" enctype="multipart/form-data" >
+		 <label class="col-sm-2 control-label">제목 :</label>
+		 <div class="col-sm-10">
+		  <input class="form-control" id="focusedInput" type="text" name="title"><br>
+		   </div>
+		 <label class="col-sm-2 control-label">파일 :</label>
+		<div class="col-sm-10">  
+		
+		<input class="btn btn-info" type="file" name="file" >
+		
+		</div>
+		<br><br><br><br>
+		<label class="col-sm-3 control-label" >
+		<input class="btn btn-info" type="submit" value="전송">
+		</label>
 	</form>
 
 </body>

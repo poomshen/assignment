@@ -7,9 +7,10 @@
 <title>Insert title here</title>
 </head>
 <body>
-	1. : ${uploadPath}<br>
-	2. : ${originfilename}<br>
-	3. : ${uploadpath}<br>
-	4. : ${pageContext.request.contextPath}/${originfilename}<br>
+<br><br>
+	1. : ${uploadPath}<br><br>
+	2. : ${originfilename}<br><br>
+	3. : ${uploadpath}<br><br>
+	4. : ${pageContext.request.contextPath}/${originfilename}<br><br>
 </body>
 </html>

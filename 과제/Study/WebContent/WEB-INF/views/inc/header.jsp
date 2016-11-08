@@ -9,7 +9,7 @@
   
 
 <div class="container">
-  <h3>Tabs</h3>
+  <h3></h3>
   <ul class="nav nav-tabs">
     <li class="active"><a href="index.htm">Xml/Json 설명</a></li>
      <li><a href="fileupload.htm">업로드</a></li>
