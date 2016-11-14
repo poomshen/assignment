@@ -39,8 +39,24 @@ public class HomeController {
 	public String index() {
 
 		
-		System.out.println("시작페이지 컨트롤러 타기");
+		System.out.println("�떆�옉�럹�씠吏� 而⑦듃濡ㅻ윭 ��湲�");
 		return "WEB-INF/views/index.html";
+	}
+	
+	@RequestMapping(value = "/index.htm", method = RequestMethod.POST)
+	public String index2() {
+
+		
+		System.out.println("POST!!!");
+		return "WEB-INF/views/index.html";
+	}
+	
+	@RequestMapping(value = "/sign.htm", method = RequestMethod.POST)
+	public String sign() {
+
+		
+		System.out.println("sign!!!");
+		return "WEB-INF/views/sign.html";
 	}
 
 	
