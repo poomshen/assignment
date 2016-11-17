@@ -215,17 +215,64 @@ public class EmpController {
 	}
 	
 	@RequestMapping("/searchs.htm")
-	public String searchList(String cmd ,String column ,String keyvalue , Model model){
+	public String searchList(String ename,String deptno,String mgr, Model model){
+	
 		empDAO empDao = sqlsession.getMapper(empDAO.class);
 		
-		Map<String, String> map = new HashMap<String, String>();
-		map.put("column", column);
-		map.put("search", keyvalue);
-		List<empDTO> list = empDao.selectSearch(map);
+		Map<String, String> ch = new HashMap<String, String>();
+		ch.put("ename", ename);
+		ch.put("deptno", deptno);
+		ch.put("mgr", mgr);
+		List<empDTO> list = empDao.selectSearch(ch);
 		
 		model.addAttribute("list",list);
 		
 		return "emp.SearchList";
+	}
+	
+	
+	@RequestMapping("/choosesearchform.htm")
+	
+	public String arraydeleteform(Model model){
+		
+		  empDAO empDao = sqlsession.getMapper(empDAO.class);
+
+			
+
+		  List<empDTO> list = empDao.getEmpList();
+
+		  
+
+		  model.addAttribute("list",list);
+		  
+		  
+		return "emp.chooseseaechform";
+	}
+	
+	
+	@RequestMapping("/choosesearch.htm")
+	public String choosesearch(String choose, String search, Model model){
+		System.out.println("choose : " + choose);
+		System.out.println("search : " + search);
+		
+		empDAO empDao = sqlsession.getMapper(empDAO.class);
+		
+		Map<String, String> ch = new HashMap<String, String>();
+		ch.put("choose", choose);
+		ch.put("search", search);
+		
+		List<empDTO> list = empDao.choosesearch(ch);
+		
+		model.addAttribute("list",list);
+		
+		return "emp.chooseseaechform";
+	}
+	
+	
+	@RequestMapping("/calendar.htm")
+	public String calendar(){
+		
+		return "emp.calendar";
 	}
  
 

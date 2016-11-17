@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-
 <!DOCTYPE mapper
 
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
@@ -12,7 +11,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  <insert id="insertEmp" parameterType="kr.co.mycom.model.empDTO">
 
     insert into emp(empno,ename,job,mgr,hiredate,sal,comm,deptno) values(
-	         #{empno},
+             #{empno},
 
              #{ename},
 
@@ -55,8 +54,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  <!-- getBoardList(전체조회) -->
 
  <select id="getEmpList" resultType="kr.co.mycom.model.empDTO">
-
-       select * from emp
+     select * from emp
 </select>
 
  <!-- getBoard (글상세보기) -->
@@ -66,31 +64,48 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   select * from emp where empno=#{empno}
 
  </select>
+
 <select id="selectSearch" parameterType="hashMap" resultType="kr.co.mycom.model.empDTO">
-	 	select * from emp 
-	 	<if test="column != null">
-	 		where ${column} like '%' || #{search} || '%'
-	 	</if>
-	 </select>
-	 <select id="selectSearch2" parameterType="hashMap" resultType="kr.co.mycom.model.empDTO">
-	 	select * from emp
-	 	<where>
-	 		<if test="name != null">
-	 			empno = #{search} 
-	 		</if>
-	 		<if test="email != null">
-	 			or ename = #{search}
-	 		</if>
-	 		<if test="home != null">
-	 			or job = #{search}
-	 		</if>
-	 	
-	 	</where>
+       select * from emp 
+   		<trim prefix="WHERE" prefixOverrides="AND">
+		<if test="deptno!=0">deptno=#{deptno}</if>
+		<if test="mgr!=null">AND mgr=#{mgr}</if>
+		<if test="ename!=null">AND ename=#{ename}</if>
+	</trim>
+ </select>
+    <select id="selectSearch2" parameterType="hashMap" resultType="kr.co.mycom.model.empDTO">
+       select * from emp
+       <where>
+          <if test="name!= null">
+             empno = #{search} 
+          </if>
+          <if test="email!= null">
+             or ename = #{search}
+          </if>
+          <if test="home!= null">
+             or job = #{search}
+          </if>
+      </where>
+    </select>
+
+	 
+	 
+ 	 <select id="choosesearch" resultType="kr.co.mycom.model.empDTO">
+	 	select * from emp where
+	 	<choose>
+    	<when test="choose == 'no'">
+    		empno like '%' || #{search} || '%'
+	 	</when>
+	 	<when test="choose == 'name'">
+    		ename like '%' || #{search} || '%'
+	 	</when>
+    	<when test="choose == 'job'">
+    		job like '%' || #{search} || '%'
+	 	</when>
+	 	</choose>
 	 </select>
 	 
 </mapper>
-
-
 
 
 

@@ -6,16 +6,17 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>Insert title here</title>
+
 </head>
 <body>
-<h3>단일검색하기</h3>
+<h3>검색하기</h3>
+
+
 	<form action="searchs.htm?cmd=search" method="post">
-		<select name="column">
-			<option value="ename">이름</option>
-			<option value="empno">부서번호</option>
-			<option value="job">직업</option>
-		</select>
-		<input type="text" name="keyvalue">
+
+		<input type="text" placeholder="부서번호" name="deptno">
+		<input type="text" placeholder="매니져" name="mgr">
+		<input type="text" placeholder="이름" name="ename">
 		<input type="submit" value="검색">
 	</form>
 

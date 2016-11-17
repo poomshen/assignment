@@ -27,9 +27,14 @@ public interface empDAO {
 
  empDTO getEmp(int num);
  
- List<empDTO> selectSearch(Map<String, String> map);
+ List<empDTO> selectSearch(Map<String,String> map);
  List<empDTO> selectSearch2(Map<String, String> map);
-
+ 
+ 
+ 
+ 
+ 
+ List<empDTO> choosesearch(Map<String, String> choosesearch);
 
  
 
